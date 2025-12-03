@@ -7,6 +7,8 @@
 #include <cstdint>
 #include <numeric>
 
+#include "utils.hpp"
+
 // Part 1 validity check
 bool CheckValidity1(const std::string& tag) {
     size_t len = tag.size();
@@ -34,7 +36,8 @@ bool CheckValidity2(const std::string& tag) {
     return true;
 }
 
-int main(int, char**){
+int main(int, char**) {
+    // Inputs
     std::vector<std::array<std::string, 2>> tag_ranges {
         {"492410748", "492568208"},
         {"246", "390"},
@@ -84,24 +87,8 @@ int main(int, char**){
         }
     }
 
-    // Sum numbers can be higher than 64 bit
-    std::string rev_ans{};
-    uint64_t sum = 0;
-    for (size_t i = 0; i < 20; ++i) {
-        for (const auto& res : results) {
-            if (i < res.size()) {
-                std::string numstr{res[res.size() - i - 1]};
-                sum += std::stoull(numstr);
-            }
-        }
-        rev_ans += std::to_string(sum % 10);
-        sum /= 10;
-    }
-
-    // Print reverse sum
-    for (size_t i = rev_ans.size(); i > 0; --i) {
-        std::cout << rev_ans[i - 1];
-    }
+    // Print the sum
+    std::cout << HighDigitSum(results) << std::endl;
 
     return 1;
 }
