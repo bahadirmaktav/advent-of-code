@@ -3,8 +3,8 @@
 #include <cstdint>
 #include <fstream>
 #include <cmath>
-
-#include "utils.hpp"
+#include <vector>
+#include <numeric>
 
 uint64_t GetMaxValue(const std::string& val, const size_t& dlen) {
     uint64_t res = 0;
@@ -29,17 +29,17 @@ int main(int, char**) {
     std::ifstream file("que3_inputs.txt");
     std::string line{};
     constexpr size_t digit_length{12};
-    std::vector<std::string> results;
+    std::vector<uint64_t> results;
     if (file.is_open()) {
         while (std::getline(file, line)) {
-            results.emplace_back(std::to_string(GetMaxValue(line, digit_length)));
+            results.emplace_back(GetMaxValue(line, digit_length));
         }
     } else {
         std::cout << "File not opened!\n";
     }
 
     // Print the sum
-    std::cout << HighDigitSum(results) << std::endl;
+    std::cout << std::accumulate(results.begin(), results.end(), uint64_t(0)) << std::endl;
 
-    return 1;
+    return 0;
 }

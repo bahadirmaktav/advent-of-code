@@ -7,10 +7,8 @@
 #include <cstdint>
 #include <numeric>
 
-#include "utils.hpp"
-
 // Part 1 validity check
-bool CheckValidity1(const std::string& tag) {
+bool CheckValidityPart1(const std::string& tag) {
     size_t len = tag.size();
     if (len % 2 != 0)
         return true;
@@ -21,7 +19,7 @@ bool CheckValidity1(const std::string& tag) {
 }
 
 // Part 2 validity check
-bool CheckValidity2(const std::string& tag) {
+bool CheckValidityPart2(const std::string& tag) {
     size_t len = tag.size();
     for (size_t wlen = 1; wlen < len; ++wlen) {
         size_t index = wlen;
@@ -37,7 +35,7 @@ bool CheckValidity2(const std::string& tag) {
 }
 
 int main(int, char**) {
-    // Inputs
+    // Set inputs
     std::vector<std::array<std::string, 2>> tag_ranges {
         {"492410748", "492568208"},
         {"246", "390"},
@@ -78,17 +76,17 @@ int main(int, char**) {
     };
 
     // Get invalid results
-    std::vector<std::string> results;
+    std::vector<uint64_t> results;
     for (const auto& tag_range : tag_ranges) {
         for (uint64_t tag = std::stoull(tag_range[0]); tag <= std::stoull(tag_range[1]); ++tag) {
-            if (!CheckValidity2(std::to_string(tag))) {
-                results.emplace_back(std::to_string(tag));
+            if (!CheckValidityPart2(std::to_string(tag))) {
+                results.emplace_back(tag);
             }
         }
     }
 
     // Print the sum
-    std::cout << HighDigitSum(results) << std::endl;
+    std::cout << "Answer : " << std::accumulate(results.begin(), results.end(), uint64_t(0)) << std::endl;
 
-    return 1;
+    return 0;
 }

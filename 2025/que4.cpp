@@ -99,5 +99,5 @@ int main(int, char**) {
 
     std::cout << "Answer : " << ans << std::endl;
 
-    return 1;
+    return 0;
 }

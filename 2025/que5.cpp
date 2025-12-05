@@ -85,5 +85,5 @@ int main() {
     std::cout << "Answer Part 1 : " << SolvePart1(ranges, nums) << std::endl;
     std::cout << "Answer Part 2 : " << SolvePart2(ranges) << std::endl;
 
-    return 1;
+    return 0;
 }
