@@ -32,7 +32,7 @@ int main(int, char**) {
             input_cells.emplace_back(tmp_row_vec);
         }
     } else {
-        std::cout << "File not opened!\n";
+        std::cout << "File could not be opened!\n";
     }
 
     // Set adjacents

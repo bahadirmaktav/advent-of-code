@@ -35,7 +35,7 @@ int main(int, char**) {
             results.emplace_back(GetMaxValue(line, digit_length));
         }
     } else {
-        std::cout << "File not opened!\n";
+        std::cout << "File could not be opened!\n";
     }
 
     // Print the sum
